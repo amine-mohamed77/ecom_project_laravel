@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Models\category;
 use App\Models\product;
+use App\Http\Controllers\firstController;
+use App\Http\Controllers\addProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,27 +17,10 @@ use App\Models\product;
 |
 */
 
-Route::get('/', function () {
+Route::get('/',[firstController::class ,'Mainpage'] );
 
-//  $result=DB::table('category')->get();
+Route::get('/proudcts/{catid?}',[firstController::class ,'GetcategoryProducts'] );
 
-//     return view('welcome',['category'=> $result]);
+Route::get('/category', [firstController::class ,'GetallCategorywithProduct']);
 
-    $result= category::all();
-
-    return view('welcome',['category'=> $result]);
-});
-
-
-
-Route::get('/proudcts/{catid?}', function ($catid = null) {
-    if ($catid == null) {
-        // $result = DB::table('product')->get();
-          $result =product::all();
-    } else {
-      $result = product::where('category_id', $catid)->get();
-    }
-
-    return view('proudct', ['proudcts' => $result]);
-});
-
+Route::get('/addproduct', [addProductController::class , 'addProduct']);

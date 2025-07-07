@@ -31,7 +31,7 @@
                         <div style="margin-top: 15px;">
                             <h3 style="font-size: 20px; font-weight: bold;">{{ $item->name }}</h3>
                             <p style="font-size: 16px; color: #28a745; margin: 8px 0;">
-                                {{ $item->quantity }} available - ${{ number_format($item->price, 2) }}
+                                {{ $item->quantity }} available -  MAD {{ number_format($item->price, 2) }}
                             </p>
                         </div>
 
