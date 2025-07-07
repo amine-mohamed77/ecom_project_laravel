@@ -19,7 +19,7 @@
             <div class="single-product-item" style="width: 100%; min-height: 500px; max-height: auto; padding: 15px; box-shadow: 0 0 10px #ddd; border-radius: 10px; overflow: hidden;">
                 <div class="product-image">
                     <a href="/proudcts/{{$item->id}}">
-                        <img src="{{ url($item->url_image) }}" alt="" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+                        <img src=" {{ $item->url_image }} " alt="" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
                     </a>
                 </div>
                 <h3 style="font-size: 24px; font-weight: bold; margin-top: 15px;">{{ $item->name }}</h3>
