@@ -47,74 +47,68 @@ class DatabaseSeeder extends Seeder
             [
                   'id' => 5,
                 'name' => 'Watches',
-                'descrption	' => 'Elegant and modern watches for men and women.',
+                'descraption' => 'Elegant and modern watches for men and women.',
                 'url_image' => 'assets/img/products/watch.jpg',
             ],
             [
                   'id' => 6,
                 'name' => 'Bags',
-                'descrption	' => 'Stylish and practical bags for daily use.',
+                'descraption' => 'Stylish and practical bags for daily use.',
                 'url_image' => 'assets/img/products/bage.jpg',
             ],
         ]);
 
 
 
-  product::create([
-            [
-                'name' => 'Canon EOS 90D',
-                'description' => 'High-resolution DSLR camera',
-                'price' => 899.99,
-                'url_image' => 'assets/img/products/Canon_EOS_90D.jpg',
-                'quantity' => 15,
-
-            ],
-            [
-                'name' => 'Margherita Pizza',
-                'description' => 'Classic pizza with fresh tomatoes and mozzarella',
-                'price' => 8.50,
-                'url_image' => 'assets/img/products/Margherita-Pizza.webp',
-                'quantity' => 50,
-
-            ],
-            [
-                'name' => 'Lipstick Set',
-                'description' => 'Matte lipstick set with multiple colors',
-                'price' => 25.00,
-                'url_image' => 'assets/img/products/makeup_product.webp',
-                'quantity' => 30,
-
-            ],
-            [
-                'name' => 'iPhone 14',
-                'description' => 'Latest Apple smartphone with powerful features',
-                'price' => 999.99,
-                'url_image' => 'assets/img/products/iphone14.jpg',
-                'quantity' => 20,
-
-            ],
-            [
-                'name' => 'Rolex Watch',
-                'description' => 'Luxury watch for special occasions',
-                'price' => 1250.00,
-                'url_image' => 'assets/img/products/watch_rolex.jpg',
-                'quantity' => 5,
-
-            ],
-            [
-                'name' => 'Leather Backpack',
-                'description' => 'Durable and stylish leather backpack',
-                'price' => 70.00,
-                'url_image' => 'assets/img/products/Leather_Backpack_photo.webp',
-                'quantity' => 10,
-            ],
-        ]);
-
-
-
-
-
-
-
+ Product::insert([
+    [
+        'name' => 'Canon EOS 90D',
+        'descraption' => 'High-resolution DSLR camera',
+        'price' => 899.99,
+        'imagepath' => 'assets/img/products/Canon_EOS_90D.jpg',
+        'quantity' => 15,
+        'category_id' => 1,
+    ],
+    [
+        'name' => 'Margherita Pizza',
+        'descraption' => 'Classic pizza with fresh tomatoes and mozzarella',
+        'price' => 8.50,
+        'imagepath' => 'assets/img/products/Margherita-Pizza.webp',
+        'quantity' => 50,
+        'category_id' => 2,
+    ],
+    [
+        'name' => 'Lipstick Set',
+        'descraption' => 'Matte lipstick set with multiple colors',
+        'price' => 25.00,
+        'imagepath' => 'assets/img/products/makeup_product.webp',
+        'quantity' => 30,
+        'category_id' => 3,
+    ],
+    [
+        'name' => 'iPhone 14',
+        'descraption' => 'Latest Apple smartphone with powerful features',
+        'price' => 999.99,
+        'imagepath' => 'assets/img/products/iphone14.jpg',
+        'quantity' => 20,
+        'category_id' => 4,
+    ],
+    [
+        'name' => 'Rolex Watch',
+        'descraption' => 'Luxury watch for special occasions',
+        'price' => 1250.00,
+        'imagepath' => 'assets/img/products/watch_rolex.jpg',
+        'quantity' => 5,
+        'category_id' => 5,
+    ],
+    [
+        'name' => 'Leather Backpack',
+        'descraption' => 'Durable and stylish leather backpack',
+        'price' => 70.00,
+        'imagepath' => 'assets\img\products/bage_prodct.jpg',
+        'quantity' => 10,
+        'category_id' => 6,
+    ],
+]);
     }
 }

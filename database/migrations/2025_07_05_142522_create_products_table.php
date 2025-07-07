@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('imagepath')->nullable();
             $table->integer('quantity');
             $table->decimal('price',8,2);
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade'); //foreign key
             $table->timestamps();
         });
     }
