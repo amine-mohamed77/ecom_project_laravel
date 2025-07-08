@@ -6,6 +6,7 @@ use App\Models\category;
 use App\Models\product;
 use App\Http\Controllers\firstController;
 use App\Http\Controllers\addProductController;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +25,18 @@ Route::get('/proudcts/{catid?}',[firstController::class ,'GetcategoryProducts'] 
 Route::get('/category', [firstController::class ,'GetallCategorywithProduct']);
 
 Route::get('/addproduct', [addProductController::class , 'addProduct']);
+
+
+Route::post('/storeproduct', function($request){
+$newProuduct = new product();
+$newProuduct -> name = $request -> name ;
+$newProuduct -> price = $request -> price ;
+$newProuduct -> quantity = $request -> quantity ;
+$newProuduct -> descraption = $request -> descraption ;
+
+$newProuduct ->save();
+
+return redirect('/addprouuct');
+});
+
+
