@@ -23,12 +23,12 @@
                     </a>
                 </div>
                 <h3 style="font-size: 24px; font-weight: bold; margin-top: 15px;">{{ $item->name }}</h3>
-                <p style="font-size: 16px; margin-top: 10px; word-wrap: break-word;">{{ $item->description }}</p>
+                <p style="font-size: 16px; margin-top: 10px; word-wrap: break-word;">{{ $item->descrption }}</p>
             </div>
         </div>
     @endforeach
 </div>
 
-		</div>
+</div>
 	</div>
 @endsection

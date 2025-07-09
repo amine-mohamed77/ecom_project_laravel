@@ -23,7 +23,7 @@
                         <!-- Product Image -->
                         <div class="product-image">
                             <a href="single-product.html">
-                                <img src="{{ url($item->imagepath) }}" alt="{{ $item->name }}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+                             <img src="{{ asset($item->imagepath) }}" alt="{{ $item->name }}"style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
                             </a>
                         </div>
 

@@ -3,43 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\category;
 use App\Models\product;
 
 class firstController extends Controller
 {
-    //
-    function Mainpage() {
+    function Mainpage()
+    {
+        $result = DB::table('categories')->get();
 
-//  $result=DB::table('category')->get();
+        return view('welcome', ['category' => $result]);
 
-//     return view('welcome',['category'=> $result]);
 
-    $result= category::all();
+    }
 
-    return view('welcome',['category'=> $result]);
+    function GetcategoryProducts($catid = null)
+    {
+        if ($catid == null) {
+            $result = product::all();
+        } else {
+            $result = product::where('category_id', $catid)->get();
+        }
+
+        return view('proudct', ['proudcts' => $result]);
     }
 
 
+    public function GetallCategorywithProduct()
+{
+    $categories = category::all();
+    $products = product::all();
 
-    function GetcategoryProducts($catid = null) {
-    if ($catid == null) {
-        // $result = DB::table('product')->get();
-          $result =product::all();
-    } else {
-      $result = product::where('category_id', $catid)->get();
-    }
-
-    return view('proudct', ['proudcts' => $result]);
+    return view('category', [
+        'categories' => $categories,
+        'product' => $products
+    ]);
+}
 }
 
 
-
-function GetallCategorywithProduct() {
-$categories = category::all();
-$product = product::all();
-return view('category',['product'=>$product , 'categories'=>$categories]);
-
-}
-
-}
