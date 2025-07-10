@@ -65,7 +65,7 @@
 										<li><a href="index_2.html">Slider Home</a></li>
 									</ul>
 								</li>
-								<li><a href="/proudct">proudct</a></li>
+								<li><a href="/proudcts">proudct</a></li>
 								<li><a href="#">Pages</a>
 									<ul class="sub-menu">
 										<li><a href="404.html">404 page</a></li>
@@ -83,7 +83,7 @@
 										<li><a href="single-news.html">Single News</a></li>
 									</ul>
 								</li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="/addproduct">AddProudct</a></li>
 								<li><a href="shop.html">Shop</a>
 									<ul class="sub-menu">
 										<li><a href="shop.html">Shop</a></li>

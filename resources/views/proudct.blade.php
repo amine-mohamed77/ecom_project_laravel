@@ -38,9 +38,20 @@
                         <!-- Add to Cart -->
                         <div class="text-center mt-auto">
                           <a href="cart.html" class="cart-btn" style="display: inline-block; background-color: #f28123; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
-                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                            <i class="fas fa-shopping-cart"></i>
+                            Add to Cart
                           </a>
 
+                           <a href="/removeproduct/{{ $item->id }}" class="cart-btn"
+                                style="flex: 1; background-color: #dc3545; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+                                    <i class="fas fa-trash-alt"></i>
+                                    Delete
+                            </a>
+                             <a href="/editproduct/{{ $item->id }}" class="cart-btn"
+                                style="flex: 2; background-color: green; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-top:10px; a::hover: background-color:green; ">
+                                    <i class="fas fa-trash-alt"></i>
+                                    Edit
+                            </a>
                         </div>
 
                     </div>
