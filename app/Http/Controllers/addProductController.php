@@ -31,6 +31,14 @@ class addProductController extends Controller
         $newProduct->save();
 
         return redirect('/addproduct')->with('success', 'Product added successfully');
+if ($request->hasFile('image')) {
+    $file = $request->file('image');
+    $filename = time().'_'.$file->getClientOriginalName();
+    $file->move(public_path('uploads'), $filename);
+    $newProuduct->imagepath = 'uploads/' . $filename;
+}
+
+
     }
 
     public function removeproduct($id) {
@@ -48,22 +56,35 @@ class addProductController extends Controller
         ]);
     }
 
-    public function UpdateProduct(Request $request, $id) {
-        $request->validate([
-            'name' => 'required|max:10|unique:products,name,'.$id,
-            'price' => 'required|integer',
-            'quantity' => 'required|integer',
-            'descraption' => 'required',
-        ]);
+   public function UpdateProduct(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|max:50',
+        'price' => 'required|numeric',
+        'quantity' => 'required|integer',
+        'descraption' => 'required',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
 
-        $product = product::findOrFail($id);
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->quantity = $request->quantity;
-        $product->descraption = $request->descraption;
-        $product->imagepath = $request->imagepath ?? '';
-        $product->category_id = $request->category_id;
-        $product->save();
-        return redirect('/proudcts')->with('success', 'Product updated successfully');
+    $product = product::findOrFail($id);
+    $product->name = $request->name;
+    $product->price = $request->price;
+    $product->quantity = $request->quantity;
+    $product->descraption = $request->descraption;
+    $product->category_id = $request->category_id;
+
+
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->move(public_path('uploads'), $imageName);
+        $product->imagepath = 'uploads/' . $imageName;
     }
+
+    $product->save();
+
+    return redirect('/addproduct')->with('success', 'Product updated successfully.');
 }
+
+    }
+

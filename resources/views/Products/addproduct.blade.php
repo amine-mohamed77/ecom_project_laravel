@@ -32,7 +32,7 @@
                                 {{ old('descraption') }}
                             </textarea>
                             <span style="color:red">@error('descraption') {{ $message }} @enderror
-                                
+
                             </span>
                         </p>
 
@@ -43,6 +43,11 @@
                             @endforeach
                          </select>
                      </p>
+
+                        <p>
+                            <input type="file" name="image">
+                            @error('image') <span style="color:red">{{ $message }}</span> @enderror
+                        </p>
 
                         <p> <input type="submit" value="Save Product"></p>
                     </form>
