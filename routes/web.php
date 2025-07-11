@@ -14,3 +14,6 @@ Route::post('/storeproduct', [addProductController::class, 'StroeProduct']);
 Route::get('/removeproduct/{id}', [addProductController::class, 'removeproduct']);
 Route::get('/editproduct/{id}', [addProductController::class, 'EditProduct']);
 Route::post('/updateproduct/{id}', [addProductController::class, 'UpdateProduct']);
+
+Route::get('/reviews', [firstController::class, 'reviews']);
+

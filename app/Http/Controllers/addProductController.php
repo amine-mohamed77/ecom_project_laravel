@@ -87,4 +87,3 @@ if ($request->hasFile('image')) {
 }
 
     }
-

@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\category;
 use App\Models\product;
+use App\Models\Review;
 
 class firstController extends Controller
 {
-    function Mainpage()
+ public   function Mainpage()
     {
         $result = DB::table('categories')->get();
 
@@ -40,6 +41,14 @@ class firstController extends Controller
         'product' => $products
     ]);
 }
+
+ public  function reviews()
+    {
+         $reviews = Review::all();
+  return view('reviews' , ['reviews' => $reviews ]);
+    }
+
+
 }
 
 
