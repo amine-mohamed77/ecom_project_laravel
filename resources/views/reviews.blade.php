@@ -12,9 +12,10 @@
 						<img src="{{ asset('assets/img/avaters/avatar2.png') }}" alt="">
 					</div>
 					<div class="client-meta">
-						<h3>David Niph <span>Local shop owner</span></h3>
+						<h3>{{$item->name}} <span>Local shop owner</span></h3>
 						<p class="testimonial-body">
 							" Sed ut perspiciatis unde omnis iste natus error veritatis et quasi architecto beatae vitae dicta eaque ipsa quae ab illo inventore..."
+                            {{$item->massage}}
 						</p>
 						<div class="last-icon">
 							<i class="fas fa-quote-right"></i>
