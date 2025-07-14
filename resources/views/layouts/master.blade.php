@@ -65,7 +65,7 @@
 										<li><a href="index_2.html">Slider Home</a></li>
 									</ul>
 								</li>
-								<li><a href="/proudct">proudct</a></li>
+								<li><a href="/proudcts">proudct</a></li>
 								<li><a href="#">Pages</a>
 									<ul class="sub-menu">
 										<li><a href="404.html">404 page</a></li>
