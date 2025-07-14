@@ -56,4 +56,15 @@ class firstController extends Controller
 
         return redirect()->back()->with('success', 'Review added successfully.');
     }
+
+public function search(Request $request)
+{
+    $query = $request->input('query');
+
+    $products = product::where('name', 'LIKE', "%$query%")->get();
+
+    return view('search_results', compact('products', 'query'));
+}
+
+
 }

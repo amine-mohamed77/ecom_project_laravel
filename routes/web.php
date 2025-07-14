@@ -17,3 +17,6 @@ Route::post('/updateproduct/{id}', [addProductController::class, 'UpdateProduct'
 // Reviews
 Route::get('/reviews', [firstController::class, 'reviews']);
 Route::post('/storereviews', [firstController::class, 'storereviews'])->name('storereviews');
+Route::get('/search', [firstController::class, 'search'])->name('search.products');
+
+

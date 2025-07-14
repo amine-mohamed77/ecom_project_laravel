@@ -110,24 +110,29 @@
 	</div>
 	<!-- end header -->
 
-	<!-- search area -->
-	<div class="search-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+<!-- search area -->
+<div class="search-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<span class="close-btn"><i class="fas fa-window-close"></i></span>
+
+				<form method="GET" action="{{ route('search.products') }}">
 					<div class="search-bar">
 						<div class="search-bar-tablecell">
 							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
+							<input type="text" name="query" placeholder="Keywords..." required>
 							<button type="submit">Search <i class="fas fa-search"></i></button>
 						</div>
 					</div>
-				</div>
+				</form>
+
 			</div>
 		</div>
 	</div>
-	<!-- end search area -->
+</div>
+<!-- end search area -->
+
 
 	<!-- home page slider -->
 	<div class="homepage-slider">
