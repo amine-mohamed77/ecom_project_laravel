@@ -10,45 +10,50 @@ use App\Models\Review;
 
 class firstController extends Controller
 {
- public   function Mainpage()
+    public function Mainpage()
     {
         $result = DB::table('categories')->get();
-
         return view('welcome', ['category' => $result]);
-
-
     }
 
-    function GetcategoryProducts($catid = null)
+    public function GetcategoryProducts($catid = null)
     {
-        if ($catid == null) {
-            $result = product::all();
-        } else {
-            $result = product::where('category_id', $catid)->get();
-        }
-
+        $result = $catid ? product::where('category_id', $catid)->get() : product::all();
         return view('proudct', ['proudcts' => $result]);
     }
 
-
     public function GetallCategorywithProduct()
-{
-    $categories = category::all();
-    $products = product::all();
-
-    return view('category', [
-        'categories' => $categories,
-        'product' => $products
-    ]);
-}
-
- public  function reviews()
     {
-         $reviews = Review::all();
-  return view('reviews' , ['reviews' => $reviews ]);
+        return view('category', [
+            'categories' => category::all(),
+            'product' => product::all()
+        ]);
     }
 
+    public function reviews()
+    {
+        $reviews = Review::all();
+        return view('reviews', ['reviews' => $reviews]);
+    }
 
+    public function storereviews(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:50',
+            'phone' => 'required|numeric',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'massage' => 'required',
+        ]);
+
+        $review = new Review();
+        $review->name = $request->name;
+        $review->phone = $request->phone;
+        $review->email = $request->email;
+        $review->subject = $request->subject;
+        $review->massage = $request->massage;
+        $review->save();
+
+        return redirect()->back()->with('success', 'Review added successfully.');
+    }
 }
-
-
