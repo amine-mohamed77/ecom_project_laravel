@@ -8,17 +8,21 @@ use App\Models\product;
 
 class addProductController extends Controller
 {
+    // Show add product form
     public function addProduct() {
         $allCategories = category::all();
         return view('products.addproduct', ['allCategories' => $allCategories]);
     }
 
+    // Store new product
     public function StroeProduct(Request $request) {
         $request->validate([
-            'name' => 'required|max:10|unique:products',
+            'name' => 'required|max:50|unique:products',
             'price' => 'required|integer',
             'quantity' => 'required|integer',
             'descraption' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $newProduct = new product();
@@ -26,27 +30,29 @@ class addProductController extends Controller
         $newProduct->price = $request->price;
         $newProduct->quantity = $request->quantity;
         $newProduct->descraption = $request->descraption;
-        $newProduct->imagepath = $request->imagepath ?? '';
         $newProduct->category_id = $request->category_id;
+
+        // ✅ Handle image upload
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('uploads'), $filename);
+            $newProduct->imagepath = 'uploads/' . $filename;
+        }
+
         $newProduct->save();
 
         return redirect('/addproduct')->with('success', 'Product added successfully');
-if ($request->hasFile('image')) {
-    $file = $request->file('image');
-    $filename = time().'_'.$file->getClientOriginalName();
-    $file->move(public_path('uploads'), $filename);
-    $newProuduct->imagepath = 'uploads/' . $filename;
-}
-
-
     }
 
+    // Delete product
     public function removeproduct($id) {
         $product = product::findOrFail($id);
         $product->delete();
         return redirect('/proudcts')->with('success', 'Product deleted');
     }
 
+    // Show edit form
     public function EditProduct($id) {
         $product = product::findOrFail($id);
         $allCategories = category::all();
@@ -56,34 +62,35 @@ if ($request->hasFile('image')) {
         ]);
     }
 
-   public function UpdateProduct(Request $request, $id)
-{
-    $request->validate([
-        'name' => 'required|max:50',
-        'price' => 'required|numeric',
-        'quantity' => 'required|integer',
-        'descraption' => 'required',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-    ]);
+    // Update product
+    public function UpdateProduct(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|max:50',
+            'price' => 'required|numeric',
+            'quantity' => 'required|integer',
+            'descraption' => 'required',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'required',
+        ]);
 
-    $product = product::findOrFail($id);
-    $product->name = $request->name;
-    $product->price = $request->price;
-    $product->quantity = $request->quantity;
-    $product->descraption = $request->descraption;
-    $product->category_id = $request->category_id;
+        $product = product::findOrFail($id);
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        $product->descraption = $request->descraption;
+        $product->category_id = $request->category_id;
 
+        //  Handle image update if present
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+            $product->imagepath = 'uploads/' . $imageName;
+        }
 
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->move(public_path('uploads'), $imageName);
-        $product->imagepath = 'uploads/' . $imageName;
+        $product->save();
+
+        return redirect('/addproduct')->with('success', 'Product updated successfully.');
     }
-
-    $product->save();
-
-    return redirect('/addproduct')->with('success', 'Product updated successfully.');
 }
-
-    }

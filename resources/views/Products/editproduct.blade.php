@@ -44,6 +44,9 @@
         <input type="file" name="image">
         @error('image') <span style="color:red">{{ $message }}</span> @enderror
     </p>
+    <p>
+        <img src="{{asset( $product->imagepath)}}" alt="" style="width: 30%">
+    </p>
 
     <p><input type="submit" value="Update Product"></p>
 </form>

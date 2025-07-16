@@ -14,7 +14,7 @@
                 @endif
 
                 <div class="contact-form">
-                    <form method="POST" action="/storeproduct">
+                    <form method="POST" action="/storeproduct" enctype="multipart/form-data">
                         @csrf
                         <p>
                             <input type="text" style="width: 100%" placeholder="Name" name="name" value="{{ old('name') }}" required>
@@ -28,28 +28,24 @@
                             <span style="color:red">@error('quantity') {{ $message }} @enderror</span>
                         </p>
                         <p>
-                            <textarea name="descraption" cols="30" rows="5" placeholder="Description" required>
-                                {{ old('descraption') }}
-                            </textarea>
-                            <span style="color:red">@error('descraption') {{ $message }} @enderror
-
-                            </span>
+                            <textarea name="descraption" cols="30" rows="5" placeholder="Description" required>{{ old('descraption') }}</textarea>
+                            <span style="color:red">@error('descraption') {{ $message }} @enderror</span>
                         </p>
 
-                     <p>
-                        <select name="category_id" id="" class="form-control" id="category_id">
-                            @foreach ( $allCategories as $item)
-                               <option value="{{$item ->id}}">{{$item -> name}}</option>
-                            @endforeach
-                         </select>
-                     </p>
+                        <p>
+                            <select name="category_id" class="form-control">
+                                @foreach ($allCategories as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </p>
 
                         <p>
                             <input type="file" name="image">
-                            @error('image') <span style="color:red">{{ $message }}</span> @enderror
+                            <span style="color:red">@error('image') {{ $message }} @enderror</span>
                         </p>
 
-                        <p> <input type="submit" value="Save Product"></p>
+                        <p><input type="submit" value="Save Product"></p>
                     </form>
                 </div>
             </div>
