@@ -131,7 +131,6 @@ INSERT INTO `products` (`id`, `name`, `descraption`, `imagepath`, `quantity`, `p
 (23, 'Rolex Watch', 'Luxury watch for special occasions', 'assets/img/products/watch_rolex.jpg', 5, 1250.00, NULL, NULL, 5),
 (24, 'Leather Backpack', 'Durable and stylish leather backpack', 'assets\\img\\products/bage_prodct.jpg', 10, 70.00, NULL, NULL, 6);
 
---
 -- Indexes for dumped tables
 --
 

@@ -32,7 +32,7 @@ class addProductController extends Controller
         $newProduct->descraption = $request->descraption;
         $newProduct->category_id = $request->category_id;
 
-        // ✅ Handle image upload
+        //  Handle image upload
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time().'_'.$file->getClientOriginalName();
@@ -40,7 +40,20 @@ class addProductController extends Controller
             $newProduct->imagepath = 'uploads/' . $filename;
         }
 
-        $newProduct->save();
+       if ($request->hasFile('image')) {
+        // Delete old image
+        if ($product->imagepath && file_exists(public_path($product->imagepath))) {
+            unlink(public_path($product->imagepath));
+        }
+
+        $image = $request->file('image');
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->move(public_path('uploads'), $imageName);
+        $product->imagepath = 'uploads/' . $imageName;
+    }
+
+    $product->save();
+
 
         return redirect('/addproduct')->with('success', 'Product added successfully');
     }
