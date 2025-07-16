@@ -21,7 +21,7 @@ class addProductController extends Controller
             'price' => 'required|integer',
             'quantity' => 'required|integer',
             'descraption' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required',
             'category_id' => 'required|exists:categories,id',
         ]);
 

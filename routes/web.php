@@ -1,22 +1,31 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\firstController;
-use App\Http\Controllers\addProductController;
 
-Route::get('/', [firstController::class, 'Mainpage']);
-Route::get('/proudcts/{catid?}', [firstController::class, 'GetcategoryProducts']);
-Route::get('/category', [firstController::class, 'GetallCategorywithProduct']);
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
-Route::get('/addproduct', [addProductController::class, 'addProduct']);
-Route::post('/storeproduct', [addProductController::class, 'StroeProduct']);
-Route::get('/removeproduct/{id}', [addProductController::class, 'removeproduct']);
-Route::get('/editproduct/{id}', [addProductController::class, 'EditProduct']);
-Route::post('/updateproduct/{id}', [addProductController::class, 'UpdateProduct']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Reviews
-Route::get('/reviews', [firstController::class, 'reviews']);
-Route::post('/storereviews', [firstController::class, 'storereviews'])->name('storereviews');
-Route::get('/search', [firstController::class, 'search'])->name('search.products');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
+require __DIR__.'/auth.php';
