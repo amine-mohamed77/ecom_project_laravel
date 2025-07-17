@@ -10,19 +10,19 @@ class addProductController extends Controller
 {
     // Show add product form
     public function addProduct() {
-        $allCategories = category::all();
+        $allCategories = Category::all();
         return view('products.addproduct', ['allCategories' => $allCategories]);
     }
 
     // Store new product
-    public function StroeProduct(Request $request) {
+   public function StoreProduct(Request $request) {
         $request->validate([
             'name' => 'required|max:50|unique:products',
             'price' => 'required|integer',
             'quantity' => 'required|integer',
             'descraption' => 'required',
             'image' => 'required',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required',
         ]);
 
         $newProduct = new product();
@@ -40,20 +40,7 @@ class addProductController extends Controller
             $newProduct->imagepath = 'uploads/' . $filename;
         }
 
-       if ($request->hasFile('image')) {
-        // Delete old image
-        if ($product->imagepath && file_exists(public_path($product->imagepath))) {
-            unlink(public_path($product->imagepath));
-        }
-
-        $image = $request->file('image');
-        $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->move(public_path('uploads'), $imageName);
-        $product->imagepath = 'uploads/' . $imageName;
-    }
-
-    $product->save();
-
+        $newProduct->save();
 
         return redirect('/addproduct')->with('success', 'Product added successfully');
     }
@@ -103,7 +90,6 @@ class addProductController extends Controller
         }
 
         $product->save();
-
         return redirect('/addproduct')->with('success', 'Product updated successfully.');
     }
 }

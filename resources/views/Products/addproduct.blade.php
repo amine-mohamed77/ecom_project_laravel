@@ -14,7 +14,7 @@
                 @endif
 
                 <div class="contact-form">
-                    <form method="POST" action="/storeproduct" enctype="multipart/form-data">
+                  <form method="POST" action="{{ route('storeproduct') }}" enctype="multipart/form-data">
                         @csrf
                         <p>
                             <input type="text" style="width: 100%" placeholder="Name" name="name" value="{{ old('name') }}" required>
