@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\firstController;
 use App\Http\Controllers\addProductController;
-// Route::get('/home',[App\ttp\controllers\HomeController::class,'index'])->name('home');
 Route::get('/', [firstController::class, 'Mainpage']);
 Route::get('/proudcts/{catid?}', [firstController::class, 'GetcategoryProducts']);
 Route::get('/category', [firstController::class, 'GetallCategorywithProduct']);
