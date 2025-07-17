@@ -21,3 +21,7 @@ Route::post('/storereviews', [firstController::class, 'storereviews'])->name('st
 Route::get('/search', [firstController::class, 'search'])->name('search.products');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
