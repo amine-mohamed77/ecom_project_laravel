@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\firstController;
 use App\Http\Controllers\addProductController;
+use Illuminate\Support\Facades\Auth;
 Route::get('/', [firstController::class, 'Mainpage']);
 Route::get('/proudcts/{catid?}', [firstController::class, 'GetcategoryProducts']);
 Route::get('/category', [firstController::class, 'GetallCategorywithProduct']);
@@ -23,4 +24,6 @@ Route::get('/search', [firstController::class, 'search'])->name('search.products
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function () {
+    return redirect('/');
+});
