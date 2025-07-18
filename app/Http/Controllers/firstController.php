@@ -8,7 +8,7 @@ use App\Models\category;
 use App\Models\product;
 use App\Models\Review;
 
-class firstController extends Controller
+class firstController extends Controller 
 {
     public function Mainpage()
     {

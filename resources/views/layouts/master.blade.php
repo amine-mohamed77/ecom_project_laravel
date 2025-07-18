@@ -105,16 +105,15 @@
         <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
     @endif
 @else
-    <li>
-        <span style="color: #fff; padding-right: 10px;">
-            👤 {{ Auth::user()->name }}
-        </span>
-    </li>
+
     <li>
         <a href="{{ route('logout') }}"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             {{ __('Logout') }}
-        </a>
+                   <span style="color: #fff; padding-right: 10px;">
+                     👤 {{ Auth::user()->name }}
+                  </span>
+          </a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
