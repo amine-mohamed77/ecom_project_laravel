@@ -66,7 +66,7 @@ class addProductController extends Controller
     public function UpdateProduct(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|max:50',
+            'name' => 'required|max:100',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
             'descraption' => 'required',

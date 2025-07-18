@@ -3,7 +3,7 @@
 @section('content')
 <style>
     body {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #ff6b35 100%);
+        background:white;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         min-height: 100vh;
     }
@@ -20,11 +20,11 @@
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         overflow: hidden;
-        border: 1px solid rgba(255, 107, 53, 0.2);
+        border: 1px solid rgba(253, 126, 20, 0.2);
     }
 
     .card-header {
-        background: linear-gradient(45deg, #1a1a1a, #ff6b35);
+        background: linear-gradient(45deg, #1a1a1a, #fd7e14);
         color: white;
         font-size: 1.8rem;
         font-weight: 600;
@@ -73,9 +73,9 @@
     }
 
     .form-control:focus {
-        border-color: #ff6b35;
+        border-color: #fd7e14;
         background: white;
-        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        box-shadow: 0 0 0 3px rgba(253, 126, 20, 0.1);
         outline: none;
         transform: translateY(-2px);
     }
@@ -86,7 +86,7 @@
     }
 
     .btn-primary {
-        background: linear-gradient(45deg, #1a1a1a, #ff6b35);
+        background: linear-gradient(45deg, #1a1a1a, #fd7e14);
         border: none;
         padding: 0.875rem 2rem;
         border-radius: 12px;
@@ -111,7 +111,7 @@
 
     .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        box-shadow: 0 10px 25px rgba(253, 126, 20, 0.3);
     }
 
     .btn-primary:hover::before {
@@ -123,7 +123,7 @@
     }
 
     .btn-link {
-        color: #ff6b35;
+        color: #fd7e14;
         text-decoration: none;
         font-size: 0.95rem;
         font-weight: 500;
@@ -133,9 +133,9 @@
     }
 
     .btn-link:hover {
-        background: rgba(255, 107, 53, 0.1);
+        background: rgba(253, 126, 20, 0.1);
         transform: translateY(-1px);
-        color: #e55a2b;
+        color: #e6711a;
     }
 
     .invalid-feedback {
@@ -158,13 +158,13 @@
         height: 1.25rem;
         margin-top: 0.125rem;
         margin-right: 0.75rem;
-        accent-color: #007bff;
+        accent-color: #fd7e14;
         border-radius: 4px;
     }
 
     .form-check-label {
         font-size: 1rem;
-        color: #4a5568;
+        color: #1a1a1a;
         font-weight: 500;
         cursor: pointer;
         user-select: none;
