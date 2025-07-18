@@ -96,7 +96,7 @@
 
 
 
-                        @guest
+@guest
     @if (Route::has('login'))
         <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
     @endif
@@ -113,7 +113,7 @@
                    <span style="color: #fff; padding-right: 10px;">
                      👤 {{ Auth::user()->name }}
                   </span>
-          </a>
+        </a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
