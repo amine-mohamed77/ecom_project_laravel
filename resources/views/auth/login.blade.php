@@ -2,203 +2,466 @@
 
 @section('content')
 <style>
-    body {
-        background:white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        min-height: 100vh;
-    }
+  /* Professional Black, Orange, White CSS Styles */
 
-    .container {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-    }
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
 
-    .card {
-        border-radius: 20px;
-        border: none;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        overflow: hidden;
-        border: 1px solid rgba(253, 126, 20, 0.2);
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 0;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Row */
+.row.justify-content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* Column */
+.col-md-8 {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Card */
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(255, 165, 0, 0.1),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 80px rgba(255, 165, 0, 0.15),
+                0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Card Header */
+.card-header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+    color: #ffffff;
+    padding: 25px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: none;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.card:hover .card-header::before {
+    left: 100%;
+}
+
+/* Card Body */
+.card-body {
+    padding: 40px 30px;
+    background: #ffffff;
+}
+
+/* Form Rows */
+.row.mb-3 {
+    margin-bottom: 25px;
+}
+
+.row.mb-0 {
+    margin-bottom: 0;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Labels */
+.col-form-label {
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+}
+
+.text-md-end {
+    text-align: left;
+}
+
+/* Form Controls */
+.form-control {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e5e5e5;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #fafafa;
+    color: #333333;
+    display: block;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #ff6b35;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+    background: #fff5f5;
+}
+
+/* Invalid Feedback */
+.invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+/* Button */
+.btn {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+    color: #ffffff;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+}
+
+/* Column Classes */
+.col-md-4 {
+    /* Keep original Bootstrap behavior */
+}
+
+.col-md-6 {
+    width: 100%;
+}
+
+.offset-md-4 {
+    /* Remove offset for centered layout */
+    margin-left: 0;
+}
+
+/* Focus Styles for Accessibility */
+.form-control:focus,
+.btn:focus {
+    outline: 3px solid rgba(255, 107, 53, 0.3);
+    outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 30px 20px;
     }
 
     .card-header {
-        background: linear-gradient(45deg, #1a1a1a, #fd7e14);
-        color: white;
-        font-size: 1.8rem;
-        font-weight: 600;
-        text-align: center;
-        padding: 2rem;
-        border-radius: 0;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .card-header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.5s;
-    }
-
-    .card-header:hover::before {
-        left: 100%;
-    }
-
-    .card-body {
-        padding: 2.5rem;
-    }
-
-    .form-label {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #1a1a1a;
-        margin-bottom: 0.75rem;
-        display: block;
+        padding: 20px;
+        font-size: 24px;
     }
 
     .form-control {
-        border-radius: 12px;
-        border: 2px solid #e2e8f0;
-        padding: 0.875rem 1rem;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        background: #f8fafc;
+        padding: 12px 16px;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        border-radius: 15px;
+        margin: 10px;
+    }
+
+    .card-header {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    .card-body {
+        padding: 20px 15px;
+    }
+}
+
+/* Loading State */
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Custom Checkbox/Radio Styles */
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: #ff6b35;
+}
+
+/* Additional styles for Login Form */
+
+/* Container spacing */
+.mt-5 {
+    margin-top: 3rem !important;
+}
+
+.mb-5 {
+    margin-bottom: 3rem !important;
+}
+
+/* Column width for login */
+.col-md-6 {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Enhanced card styles */
+.shadow-lg {
+    box-shadow: 0 20px 60px rgba(255, 165, 0, 0.1),
+                0 8px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.rounded-4 {
+    border-radius: 20px !important;
+}
+
+.border-0 {
+    border: none !important;
+}
+
+/* Card body padding */
+.px-4 {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.py-4 {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
+/* Form labels */
+.form-label {
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+}
+
+/* Form spacing */
+.mb-3 {
+    margin-bottom: 25px !important;
+}
+
+/* Form check styles */
+.form-check {
+    padding-left: 0;
+    margin-bottom: 25px;
+}
+
+.form-check-input {
+    width: 18px;
+    height: 18px;
+    margin-top: 0.25em;
+    margin-right: 12px;
+    vertical-align: top;
+    background-color: #fff;
+    border: 2px solid #e5e5e5;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form-check-input:checked {
+    background-color: #ff6b35;
+    border-color: #ff6b35;
+}
+
+.form-check-input:focus {
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.form-check-label {
+    color: #333333;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* Flex utilities */
+.d-flex {
+    display: flex !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+/* Button variations */
+.btn.px-4 {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: #ff6b35;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.btn-link:hover {
+    color: #ff8c42;
+    text-decoration: none;
+    background: rgba(255, 107, 53, 0.05);
+    padding: 8px 12px;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-link:focus {
+    outline: 2px solid rgba(255, 107, 53, 0.3);
+    outline-offset: 2px;
+}
+
+.text-decoration-none {
+    text-decoration: none !important;
+}
+
+/* Responsive adjustments for login form */
+@media (max-width: 768px) {
+    .col-md-6 {
+        max-width: 100%;
+        margin: 0 10px;
+    }
+
+    .px-4 {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .py-4 {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .d-flex.justify-content-between {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn.px-4 {
         width: 100%;
-    }
-
-    .form-control:focus {
-        border-color: #fd7e14;
-        background: white;
-        box-shadow: 0 0 0 3px rgba(253, 126, 20, 0.1);
-        outline: none;
-        transform: translateY(-2px);
-    }
-
-    .form-control.is-invalid {
-        border-color: #e53e3e;
-        background: #fed7d7;
-    }
-
-    .btn-primary {
-        background: linear-gradient(45deg, #1a1a1a, #fd7e14);
-        border: none;
-        padding: 0.875rem 2rem;
-        border-radius: 12px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: white;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-primary::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.5s;
-    }
-
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(253, 126, 20, 0.3);
-    }
-
-    .btn-primary:hover::before {
-        left: 100%;
-    }
-
-    .btn-primary:active {
-        transform: translateY(0);
+        margin-bottom: 10px;
     }
 
     .btn-link {
-        color: #fd7e14;
-        text-decoration: none;
-        font-size: 0.95rem;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        transition: all 0.3s ease;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .mt-5 {
+        margin-top: 2rem !important;
     }
 
-    .btn-link:hover {
-        background: rgba(253, 126, 20, 0.1);
-        transform: translateY(-1px);
-        color: #e6711a;
+    .mb-5 {
+        margin-bottom: 2rem !important;
     }
-
-    .invalid-feedback {
-        font-size: 0.875rem;
-        color: #e53e3e;
-        margin-top: 0.5rem;
-        font-weight: 500;
-    }
-
-    .mb-3 {
-        margin-bottom: 1.75rem;
-    }
-
-    .form-check {
-        margin-bottom: 2rem;
-    }
-
-    .form-check-input {
-        width: 1.25rem;
-        height: 1.25rem;
-        margin-top: 0.125rem;
-        margin-right: 0.75rem;
-        accent-color: #fd7e14;
-        border-radius: 4px;
-    }
-
-    .form-check-label {
-        font-size: 1rem;
-        color: #1a1a1a;
-        font-weight: 500;
-        cursor: pointer;
-        user-select: none;
-    }
-
-    .d-flex {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    @media (min-width: 576px) {
-        .d-flex {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        .card-header {
-            padding: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .container {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-    }
+}
 </style>
 
 <div class="container mt-5 mb-5">
