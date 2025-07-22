@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\category;
 use App\Models\product;
 use App\Models\Review;
+use Illuminate\Pagination\Paginator;
 
-class firstController extends Controller 
+class firstController extends Controller
 {
     public function Mainpage()
     {
@@ -18,7 +19,10 @@ class firstController extends Controller
 
     public function GetcategoryProducts($catid = null)
     {
-        $result = $catid ? product::where('category_id', $catid)->get() : product::all();
+        $result = $catid
+            ? product::where('category_id', $catid)->paginate(9)
+            : product::paginate(4);
+
         return view('proudct', ['proudcts' => $result]);
     }
 
@@ -57,14 +61,10 @@ class firstController extends Controller
         return redirect()->back()->with('success', 'Review added successfully.');
     }
 
-public function search(Request $request)
-{
-    $query = $request->input('query');
-
-    $products = product::where('name', 'LIKE', "%$query%")->get();
-
-    return view('search_results', compact('products', 'query'));
-}
-
-
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $products = product::where('name', 'LIKE', "%$query%")->paginate(9);
+        return view('search_results', compact('products', 'query'));
+    }
 }

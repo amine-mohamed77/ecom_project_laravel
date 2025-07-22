@@ -1,15 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
-
 <div class="product-section mt-150 mb-150">
     <div class="container">
+
         <!-- Section Title -->
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="section-title">
                     <h3><span class="orange-text">Our</span> Products</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                         <!-- Product Image -->
                         <div class="product-image">
                             <a href="single-product.html">
-                             <img src="{{ asset($item->imagepath) }}" alt="{{ $item->name }}"style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+                                <img src="{{ asset($item->imagepath) }}" alt="{{ $item->name }}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
                             </a>
                         </div>
 
@@ -31,26 +31,20 @@
                         <div style="margin-top: 15px;">
                             <h3 style="font-size: 20px; font-weight: bold;">{{ $item->name }}</h3>
                             <p style="font-size: 16px; color: #28a745; margin: 8px 0;">
-                                {{ $item->quantity }} available -  MAD {{ number_format($item->price, 2) }}
+                                {{ $item->quantity }} available - MAD {{ number_format($item->price, 2) }}
                             </p>
                         </div>
 
-                        <!-- Add to Cart -->
+                        <!-- Buttons -->
                         <div class="text-center mt-auto">
-                          <a href="cart.html" class="cart-btn" style="display: inline-block; background-color: #f28123; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
-                            <i class="fas fa-shopping-cart"></i>
-                            Add to Cart
-                          </a>
-
-                           <a href="/removeproduct/{{ $item->id }}" class="cart-btn"
-                                style="flex: 1; background-color: #dc3545; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
-                                    <i class="fas fa-trash-alt"></i>
-                                    Delete
+                            <a href="cart.html" class="cart-btn" style="background-color: #f28123; color: #fff; padding: 10px 20px; border-radius: 5px;">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
                             </a>
-                             <a href="/editproduct/{{ $item->id }}" class="cart-btn"
-                                style="flex: 2; background-color: green; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-top:10px; a::hover: background-color:green; ">
-                                    <i class="fas fa-trash-alt"></i>
-                                    Edit
+                            <a href="/removeproduct/{{ $item->id }}" class="cart-btn" style="background-color: #dc3545; color: #fff; padding: 10px 20px; border-radius: 5px;">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                            <a href="/editproduct/{{ $item->id }}" class="cart-btn" style="background-color: green; color: #fff; padding: 10px 20px; border-radius: 5px; margin-top:10px;">
+                                <i class="fas fa-edit"></i> Edit
                             </a>
                         </div>
 
@@ -58,6 +52,12 @@
                 </div>
             @endforeach
         </div>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-center mt-4">
+            {{ $proudcts->links() }}
+        </div>
+
     </div>
 </div>
 @endsection

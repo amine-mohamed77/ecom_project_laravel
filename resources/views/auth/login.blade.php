@@ -471,7 +471,6 @@ input[type="radio"] {
                 <div class="card-header">
                     {{ __('Login') }}
                 </div>
-
                 <div class="card-body px-4 py-4">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
