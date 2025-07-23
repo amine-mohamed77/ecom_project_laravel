@@ -67,4 +67,12 @@ class firstController extends Controller
         $products = product::where('name', 'LIKE', "%$query%")->paginate(9);
         return view('search_results', compact('products', 'query'));
     }
+
+   public function productTable(Request $request)
+{
+    $products = Product::all();
+  return view('table', ['products' => $products]);
+
+}
+
 }

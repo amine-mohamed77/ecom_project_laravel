@@ -30,3 +30,6 @@ Auth::routes();
 Route::get('/home', function () {
     return redirect('/');
 });
+
+Route::get('/productstable', [firstController::class, 'productTable'])->name('products.table');
+Route::resource('products', App\Http\Controllers\ProductController::class);

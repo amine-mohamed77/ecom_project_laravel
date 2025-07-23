@@ -319,3 +319,7 @@
 	<script src="{{ asset('assets/js/jquery.meanmenu.min.js') }}"></script>
 	<script src="{{ asset('assets/js/sticker.js') }}"></script>
 	<script src="{{ asset('assets/js/main.js') }}"></script>
+
+@yield('scripts') 
+</body>
+</html>
