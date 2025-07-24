@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\firstController;
 use App\Http\Controllers\addProductController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CartController;
 
 Route::get('/', [firstController::class, 'Mainpage']);
 Route::get('/proudcts/{catid?}', [firstController::class, 'GetcategoryProducts']);
@@ -33,3 +34,11 @@ Route::get('/home', function () {
 
 Route::get('/productstable', [firstController::class, 'productTable'])->name('products.table');
 Route::resource('products', App\Http\Controllers\ProductController::class);
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::post('/cart/update/{cartId}', [CartController::class, 'update'])->name('cart.update');
+    Route::delete('/cart/remove/{cartId}', [CartController::class, 'remove'])->name('cart.remove');
+});

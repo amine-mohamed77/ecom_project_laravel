@@ -37,9 +37,13 @@
 
                         <!-- Buttons -->
                         <div class="text-center mt-auto">
-                            <a href="cart.html" class="cart-btn" style="background-color: #f28123; color: #fff; padding: 10px 20px; border-radius: 5px;">
-                                <i class="fas fa-shopping-cart"></i> Add to Cart
-                            </a>
+                        <form action="{{ route('cart.add', $item->id) }}" method="POST" style="display:inline-block;">
+                                      @csrf
+                           <button type="submit" class="cart-btn" style="background-color: #f28123; color: #fff; padding: 10px 20px; border-radius: 5px;">
+                              <i class="fas fa-shopping-cart"></i> Add to Cart
+                           </button>
+                        </form>
+
                             <a href="/removeproduct/{{ $item->id }}" class="cart-btn" style="background-color: #dc3545; color: #fff; padding: 10px 20px; border-radius: 5px;">
                                 <i class="fas fa-trash-alt"></i> Delete
                             </a>
