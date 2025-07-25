@@ -94,6 +94,7 @@
 										<li><a href="/cart">Cart</a></li>
 									</ul>
 								</li>
+                                <li><a href="/productstable">ProudctTable</a></li>
 
 
 

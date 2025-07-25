@@ -75,4 +75,11 @@ class firstController extends Controller
 
 }
 
+public function AddproudectImages($productid){
+
+   $product = Product::find($productid);
+ return view('addproudectImages', compact('productid'));
+
+
+}
 }

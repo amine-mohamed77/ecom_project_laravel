@@ -33,8 +33,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/productstable', [firstController::class, 'productTable'])->name('products.table');
-Route::resource('products', App\Http\Controllers\ProductController::class);
-
+Route::resource('products', App\Http\Controllers\addProductController::class);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
@@ -42,3 +41,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/update/{cartId}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/cart/remove/{cartId}', [CartController::class, 'remove'])->name('cart.remove');
 });
+
+  Route::get('/addproudectImages/{productid}', [firstController::class, 'AddproudectImages'])->name('add.product.images');;
+
