@@ -65,6 +65,11 @@ This project is designed to be clean, scalable, and easy to extend for real-worl
 ### 1️⃣ Clone the repository
 ```bash
 git clone https://github.com/your-username/ecommerce.git
+
+---
+```bash
+
+### run project
 cd ecommerce
 cp .env.example .env
 DB_DATABASE=ecommerce
